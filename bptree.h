@@ -12,6 +12,7 @@ typedef struct BPTreeNode {
 BPTreeNode* createNode();
 void insert(int key);
 BPTreeNode* search(int key);
+void delete_key(int key);
 
 // Additional function declarations if required, e.g., delete.
 
