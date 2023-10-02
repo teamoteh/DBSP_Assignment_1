@@ -45,9 +45,8 @@ int load_games_from_file(const char* filename, NBA_Game* games) {
 
     // Skipping the header
     printf(fgets(buffer, sizeof(buffer), file));
-    printf(fgets(buffer, sizeof(buffer), file));
 
-    while (fgets(buffer, sizeof(buffer), file)) {
+    while(fgets(buffer, sizeof(buffer), file)){
         sscanf(buffer, "%s %d %d %f %f %f %d %d %d", 
                games[count].date, 
                &games[count].teamID_home, 
@@ -60,16 +59,13 @@ int load_games_from_file(const char* filename, NBA_Game* games) {
                &games[count].HOME_TEAM_WINS);
         count++;
     }
-   
-    printf("%d\n", count);  
-
     fclose(file);
     return count;
 }
 
 
 int main() {
-    NBA_Game* games = (NBA_Game*) malloc(10000 * sizeof(NBA_Game)); // Assuming a maximum of 10,000 games, you can adjust this
+    NBA_Game* games = (NBA_Game*) malloc(100000000 * sizeof(NBA_Game)); // Assuming a maximum of 10,000 games, you can adjust this
     if(!games) {
             perror("Memory allocation failed");
             return 1;
