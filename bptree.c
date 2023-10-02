@@ -243,3 +243,23 @@ void merge_nodes(BPTreeNode* node, int idx) {
 
     free(sibling);
 }
+
+int count_nodes(BPTreeNode* node) {
+    if (!node) return 0;
+    int count = 1; // Counting the current node
+    if (node->children[0]) {
+        for (int i = 0; i <= node->num_keys; i++) {
+            count += count_nodes(node->children[i]);
+        }
+    }
+    return count;
+}
+
+// This function calculates the depth/levels of a B+ tree
+int count_levels(BPTreeNode* node) {
+    if (!node) return 0;
+    // If it's a leaf node, just return 1 (its own level)
+    if (!node->children[0]) return 1;
+    // Otherwise, return the depth of the first child + 1 (for the current level)
+    return 1 + count_levels(node->children[0]);
+}

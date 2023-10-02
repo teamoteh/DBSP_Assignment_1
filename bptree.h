@@ -13,6 +13,8 @@ BPTreeNode* createNode();
 void insert(int key);
 BPTreeNode* search(int key);
 void delete_key(int key);
+int count_nodes(BPTreeNode* node);
+int count_levels(BPTreeNode* node);
 
 // Additional function declarations if required, e.g., delete.
 
